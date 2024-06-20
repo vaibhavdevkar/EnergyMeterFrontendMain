@@ -16,7 +16,9 @@ import {
 // import { ReactComponent as LogoWhite } from "../assets/images/logos/xtremelogowhite.svg";
 import user1 from "../assets/images/users/user4.jpg";
 // import smalllogo from '../assets/images/logos/smalllogo.png'
-import smalllogo from '../assets/images/logos/hightechasmall.png'
+//import smalllogo from '../assets/images/logos/hightechasmall.png'
+import logo from '../assets/images/bg/Main02.png'
+
 
 const Header = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -34,15 +36,15 @@ const Header = () => {
       <div className="d-flex align-items-center">
         <NavbarBrand href="/" className="d-lg-none">
           {/* <LogoWhite /> */}
-          <img src={smalllogo} alt="not found" height={35} width={40}   />
+          <img src={logo} alt="not found" height={35} width={40}   />
         </NavbarBrand>
-        <Button
+        {/* <Button
           color="primary"
           className="d-lg-none"
           onClick={() => showMobilemenu()}
         >
           <i className="bi bi-list"></i>
-        </Button>
+        </Button> */}
       </div>
       <div className="hstack gap-2">
         <Button
@@ -62,12 +64,12 @@ const Header = () => {
       <Collapse navbar isOpen={isOpen}>
         <Nav className="me-auto" navbar>
           <NavItem>
-            <Link to="/starter" className="nav-link">
+            <Link to="/starter" className="nav-link" style={{color : "white"}}>
               Starter
             </Link>
           </NavItem>
           <NavItem>
-            <Link to="/about" className="nav-link">
+            <Link to="/about" className="nav-link" style={{color : "white"}}>
               About
             </Link>
           </NavItem>

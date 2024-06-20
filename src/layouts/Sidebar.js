@@ -3,6 +3,7 @@ import Logo from "./Logo";
 // import logo from '../assets/images/logos/hightech.png'
 import { Link, useLocation } from "react-router-dom";
 
+
 const navigation = [
   {
     title: "Dashboard",
@@ -14,36 +15,6 @@ const navigation = [
     href: "/badges",
     icon: "bi bi-envelope",
   },
-  // {
-  //   title: "Buttons",
-  //   href: "/buttons",
-  //   icon: "bi bi-hdd-stack",
-  // },
-  // {
-  //   title: "Cards",
-  //   href: "/cards",
-  //   icon: "bi bi-card-text",
-  // },
-  // {
-  //   title: "Grid",
-  //   href: "/grid",
-  //   icon: "bi bi-columns",
-  // },
-  // {
-  //   title: "Table",
-  //   href: "/table",
-  //   icon: "bi bi-layout-split",
-  // },
-  // {
-  //   title: "Forms",
-  //   href: "/forms",
-  //   icon: "bi bi-textarea-resize",
-  // },
-  // {
-  //   title: "Breadcrumbs",
-  //   href: "/breadcrumbs",
-  //   icon: "bi bi-link",
-  // },
   {
     title: "About",
     href: "/about",

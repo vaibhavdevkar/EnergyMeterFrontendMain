@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col, CardTitle, Card } from 'reactstrap';
 // import ComponentCard from '../components/ComponentCard';
-import about from '../assets/images/bg/hightechabout.png'
+import thetavega from '../assets/images/bg/logo(png)-02.png'
 
 
 const About = () => {
@@ -23,19 +23,23 @@ const About = () => {
             <Col lg="8">
               <div className="mt-3 p-3"  >
                 <p  align="justify">
-                     &nbsp; &nbsp;&nbsp;   Since 1988, Hi-Tech Group has been a leading manufacturer, importer, and industrial solution provider with our corporate office in Aurangabad, Maharashtra. With over 32 years of experience, we developed ourselves as reliable, responsible, and renowned partners for every industry. Our prompt response and timely delivery made us one of the largest industrial distributors and facilitated us to serve well known Indian and International brands to our customers. <br />
+                     &nbsp; &nbsp;&nbsp;   THETAVEGA TECH, founded in 2020, focuses on Internet of Things-based solutions for the manufacturing sector. The organization serves as a partner in technology-driven business transformation and provides a low-risk global delivery model for successful project completion. THETAVEGA TECH develops products, puts strategic plans into action, and streamlines operations in dynamic digital settings by cooperating with multinational enterprises and cutting-edge technology. <br />
 
-                     &nbsp; &nbsp;&nbsp;  We are completely customer centric and are committed to deliver quality and complete value to our customers. With every passing day, we strive to be efficient and deliver our customers everything they require for, at competitive prices. We believe every purchase, every correct solution, every timely delivery, every prompt service, every deal adds value to our customers, which motivates us to be more justified with costs and provide the best pre-sales and after-sales services.
+                     &nbsp; &nbsp;&nbsp; THETAVEGA TECH works on IoT-based “Smart Industry” Solutions for Manufacturing Industries, as a partner to conceptualize and realize technology-driven business transformation Initiatives. We provide solutions for any Dynamic Environment where Business and Technology Strategies converge to enhance their Productivity and Profitability Together by using a low-risk Global Delivery Model (GDM) to accelerate schedules with a high degree of Time and Cost Predictability.  
                   <br />
-                  &nbsp; &nbsp;&nbsp;  Even though technology has enabled us to be better during the last decades, at the end of the day, people make technology work. Our talented and highly qualified minds at work are fuelled with innovation; they perfectly understand customer’s needs and keep them as their first priority. Backed by visionary experts & equipped with advanced technology, we try to meet or exceed every expectation of our customers with our innovative solutions.
+                  &nbsp; &nbsp;&nbsp;  Their knowledge is broad and includes areas like AI, cloud computing, quality management, and assembly. They reduce complexity, improve productivity, and promote real business growth through new techniques. The company's dedication to innovation goes beyond technology, influencing its ethical standards and network of information. THETAVEGA TECH seeks to serve as the premier strategic partner for manufacturing excellence.
                 </p>
               </div>
+              <h6 style={{ paddingLeft: '5%'}}> Email: tejas@thetavega.tech</h6>
+              <h6 style={{ paddingLeft: '5%' }}>  Contact Us: +919371675893 </h6>
+              
+              
             </Col>
             <Col>
-            <div className=' m-4'>
+            <div className='m-1'>
 
             
-           <img src={about} alt='not found' style={{ width: '100%' }} />
+           <img src={thetavega} alt='not found' style={{ width: '100%' }} />
            </div>
 
             </Col>
@@ -53,4 +57,5 @@ const About = () => {
 };
 
 export default About;
+
 

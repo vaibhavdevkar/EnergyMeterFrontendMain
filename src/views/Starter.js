@@ -7,33 +7,54 @@ import TopCards from "../components/dashboard/TopCards";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-
-
-
-
 const Starter = () => {
 
-  const [data, setData] = useState({});
+  // const [data, setData] = useState({});
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get("https://mqtt-backend-api.onrender.com/api/data");
+  //       setData(response.data);  
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
+
+  //   fetchData();
+
+  //   const intervalId = setInterval(() => {
+  //     fetchData();
+  //   }, 1000);
+
+  //   return () => clearInterval(intervalId);
+  // }, []);
+
+
+  const [energy , setEnergy] = useState([])
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("https://mqtt-backend-api.onrender.com/api/data");
-        setData(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
 
-    fetchData();
+    const fetchData = async () => {
+      try{
+        const getdata = await axios.get("http://localhost:4000/modbus-data")
+        setEnergy(getdata.data)
+      //  console.log(getdata.data)
+      }catch(err){
+        console.log(err)
+      }
+    }
+
+    fetchData()
 
     const intervalId = setInterval(() => {
-      fetchData();
-    }, 1000);
+          fetchData();
+        }, 10000);
+    
+        return () => clearInterval(intervalId);
+  },[])
 
-    return () => clearInterval(intervalId);
-  }, []);
-
+  // console.log(energy[1])
 
 
   return (
@@ -44,8 +65,8 @@ const Starter = () => {
           <TopCards
             bg="bg-light-success text-success"
             title="Profit"
-            subtitle="Discharge Pressure"
-            earning={data.DisPr / 10 + " Bar"}
+            subtitle="Frequency"
+            earning={energy.Frequency}
             icon="bi bi-wallet"
           />
         </Col>
@@ -53,8 +74,9 @@ const Starter = () => {
           <TopCards
             bg="bg-light-danger text-danger"
             title="Refunds"
-            subtitle="Temperature"
-            earning={data.DisTr + "°"}
+            subtitle="Phase Voltage 1 "
+            earning={energy.PhaseVoltage1}
+            // earning={data.DisTr + "°"}
             icon="bi bi-thermometer-high"
           />
         </Col>
@@ -62,8 +84,9 @@ const Starter = () => {
           <TopCards
             bg="bg-light-warning text-warning"
             title="New Project"
-            subtitle="Cumulative Run Hours"
-            earning={parseInt(data.CumUnload / 60 + data.CumLoad / 60) + " Hr"}
+            subtitle="Phase Voltage 2 "
+            earning={energy.PhaseVoltage2}
+            // earning={parseInt(data.CumUnload / 60 + data.CumLoad / 60) + " Hr"}
             icon="bi bi-hourglass"
           />
         </Col>
@@ -71,8 +94,9 @@ const Starter = () => {
           <TopCards
             bg="bg-light-info text-info"
             title="Sales"
-            subtitle="Cumulative Load Hours"
-            earning={parseInt(data.CumLoad / 60) + " Hr"}
+            subtitle="Phase Voltage 3"
+            earning={energy.PhaseVoltage3}
+            // earning={parseInt(data.CumLoad / 60) + " Hr"}
             icon="bi bi-hourglass"
 
           />
@@ -81,8 +105,9 @@ const Starter = () => {
           <TopCards
             bg="bg-light-danger text-danger"
             title="Sales"
-            subtitle="Cumulative Unload Hours"
-            earning={parseInt(data.CumUnload / 60) + " Hr"}
+            subtitle="Average phase Voltage "
+            earning={energy.AveragePhaseVoltage}
+            // earning={parseInt(data.CumUnload / 60) + " Hr"}
             icon="bi bi-lightning"
           />
         </Col>
@@ -90,8 +115,9 @@ const Starter = () => {
           <TopCards
             bg="bg-light-primary text-primary"
             title="Sales"
-            subtitle="Air Filter Change Time"
-            earning={data.RemAFCT + " Hr"}
+            subtitle="Line Voltage V12"
+            earning={energy.LineVoltageV12}
+            // earning={data.RemAFCT + " Hr"}
             icon="bi bi-hourglass"
           
           />
@@ -100,10 +126,11 @@ const Starter = () => {
           <TopCards
             bg="bg-light-danger text-black"
             title="Sales"
-            subtitle="Oil Filter Change Time"
-            earning={data.RemOFCT + " Hr"}
+            subtitle="Line Voltage V23"
+            earning={energy.LineVoltageV23}
+            // earning={data.RemOFCT + " Hr"}
             icon="bi bi-hourglass"
-            color={data.RemOFCT < 100 ? "text-danger" : "text-black"}
+            // color={data.RemOFCT < 100 ? "text-danger" : "text-black"}
             
           />
         </Col>
@@ -111,27 +138,30 @@ const Starter = () => {
           <TopCards
             bg="bg-light-info text-info"
             title="Sales"
-            subtitle="Oil Sept Change Time"
-            earning={data.RemOSCT + " Hr"}
+            subtitle="Line Voltage V31"
+            earning={energy.LineVoltageV31}
+            // earning={data.RemOSCT + " Hr"}
             icon="bi bi-hourglass"
             
           />
         </Col>
-        <Col sm="6" lg="3">
+        {/* <Col sm="6" lg="3">
           <TopCards
             bg="bg-light-warning text-warning"
             title="Sales"
             subtitle="Oil Change Time"
-            earning={data.RemOCT + " Hr"}
+            earning={energy[8]}
+           earning={data.RemOCT + " Hr"}
             icon="bi bi-hourglass"
           />
-        </Col>
+        </Col> */}
         <Col sm="6" lg="3">
           <TopCards
             bg="bg-light-info text-info"
             title="Sales"
-            subtitle="Greesing Time"
-            earning={data.RemRGT + " Hr"}
+            subtitle="Average Line Voltage "
+            earning={energy.AverageLineVoltage}
+            // earning={data.RemRGT + " Hr"}
             icon="bi bi-hourglass"
           />
         </Col>
@@ -139,44 +169,45 @@ const Starter = () => {
           <TopCards
             bg="bg-light-danger text-danger"
             title="Sales"
-            subtitle="PowerVFD"
-            earning={data.PowerVFD / 100 + " KW"}
+            subtitle="Current A1"
+            earning={energy.CurrentA1}
+            // earning={data.PowerVFD / 100 + " KW"}
             icon="bi bi-power"
           />
         </Col>
-        <Col sm="6" lg="3">
+        {/* <Col sm="6" lg="3">
           <TopCards
             bg="bg-light-info text-info"
             title="Sales"
             subtitle="VoltageVFD"
-            earning={data.VoltageVFD / 10}
+             earning={data.VoltageVFD / 10}
             icon="bi bi-bag"
           />
-        </Col>
-        <Col sm="6" lg="3">
+        </Col> */}
+        {/* <Col sm="6" lg="3">
           <TopCards
             bg="bg-light-danger text-danger"
             title="Sales"
             subtitle="CurrentVFD"
-            earning={(data.CurrentVFD / 100).toFixed(1) + " Amp"}
+             earning={(data.CurrentVFD / 100).toFixed(1) + " Amp"}
             icon="bi bi-lightning"
           />
-        </Col>
+        </Col> */}
         
       </Row>
       {/***Sales & Feed***/}
-      <Row>
+      {/* <Row>
         <Col sm="6" lg="6" xl="7" xxl="8">
           <SalesChart />
         </Col>
         <Col sm="6" lg="6" xl="5" xxl="4">
           <Feeds />
         </Col>
-      </Row>
+      </Row> */}
       {/***Table ***/}
       <Row>
         <Col lg="12">
-          <ProjectTables />
+          {/* <ProjectTables /> */}
         </Col>
       </Row>
       {/***Blog Cards***/}

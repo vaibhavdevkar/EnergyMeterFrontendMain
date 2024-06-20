@@ -12,9 +12,9 @@ const TopCards = (props) => {
           </div>
           <div className="ms-3">
             <h3 className={`mb-0 font-weight-bold  ${props.color}` } >{props.earning}</h3>
-            <small className="font-weight-bold "  style={{ fontWeight:"bold", color:"#120A8F"}}>
+            <h5 className="font-weight-bold "  style={{ fontWeight:"bold", color:"#120A8F"}}>
               {props.subtitle}
-            </small>
+            </h5>
           </div>
         </div>
       </CardBody>
